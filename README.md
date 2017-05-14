@@ -22,7 +22,7 @@ Sina Weibo limits the permission of search feature that only users has signed in
 ### Query
 ```query.txt``` file is for storing all the queries. Please add queries in the form of ```keyword;startDate;endDate;pageofResult```, one query per line. Sina Weibo does not support "Scroll to bottom to view more" feature in search. Instead, it separates the query results into pages. And Sina limits the page of results to 50. So for each query, only 50 pages of the results can be accessed by users. And each page contains 20 posts. Therefore, for each search there are maximum 1000 posts can be obtained. **However, it might be the case that there are less than 1000 posts from the query. So please check the maximum number of pages that contain all results of the query**. 
 
-### Run the Program
+### Run the program
 Run the program by typing ```python scraper.py```
 
 ### What happens during execution
@@ -30,3 +30,6 @@ Firefox browser will be executed, navigated to search page with keyword autimati
 
 ### Output
 Results will be in ```output``` folder in csv format. Each query generates one csv file. Excel has problem displaying Chinese characters. So viewing through other text editor is better(If you are using Mac, you can use Numbers to open the csv files).
+
+### How to developer
+For now this program only supports query with keyword for my own purpose. everyone is free to explore new features. There is one thing needs to be noted that it does not use Sina Weibo API since Weibo limits the amount of data to query if API is used. It basically uses broswer cookie to login, url address to do search. Please submit a pull request if you are read to contribute.
