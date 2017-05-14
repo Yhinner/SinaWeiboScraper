@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+
+# Author: Xuzhou Yin 
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
