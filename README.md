@@ -1,6 +1,9 @@
 # SinaWeiboScraper
 This is a Web Scraper for Sina Weibo Search by Keywords
 
+# Why use SinaWeiboScraper?
+There exists some Sina Weibo Scrapers. However, they are all implemented with Weibo API. Sina Weibo limits the amount of data that can be obtained each hour, day, and month if API os used. This is a Web Scraper for Sina Weibo Search by Keywords implemented by pure url encoding so that it simulates a real browser, navigates to the page and get access to the data. It gets rid of the limits. It is possible that Weibo will let you enter verification code to prove you are not a machine, but it is not often.
+
 # Author
 [Xuzhou Yin](https://github.com/Yhinner). Personal Website: [www.xuzhouyin.com](http://www.xuzhouyin.com)
 
