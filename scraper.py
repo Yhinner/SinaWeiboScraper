@@ -7,17 +7,15 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.chrome.options import Options
-import os
 import urllib
 from selenium import webdriver
 import datetime
 import time as systime
-import pickle
 from selenium.webdriver.firefox.webdriver import FirefoxProfile
 import unicodecsv as csv
 base_url = 'http://s.weibo.com/weibo/'
 file = "query"
-file_index = 2
+file_index = 3
 def scrap():
 	with open('query.txt') as f:
 		each_query = f.readlines()
@@ -30,6 +28,7 @@ def scrap():
 		end = s[2]
 		page = s[3]
 		scrap_each_query(keyword, start, end, page)
+		file_index = file_index + 1
 
 def scrap_each_query(keyword, start, end, page):
 	# login_url = 'http://m.weibo.com/'
@@ -90,7 +89,7 @@ def scrap_each_query(keyword, start, end, page):
 	save_to_csv(file + str(file_index), all_content, all_time)
 
 def save_to_csv(filename, content, time):
-	with open(filename + '.csv', 'w') as csvfile:
+	with open('./output/'filename + '.csv', 'w') as csvfile:
 	    spamwriter = csv.writer(csvfile, dialect='excel', encoding='utf-16')
 	    spamwriter.writerow(["Post ID", "Post Content", "Post Time"])
 	    for i in range(len(content)):
