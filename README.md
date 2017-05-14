@@ -1,5 +1,5 @@
 # SinaWeiboScraper
-This is a Web Scraper for Sina Weibo Search for Keywords
+This is a Web Scraper for Sina Weibo Search by Keywords
 
 ## How to Download
 Open terminal, and navigate to the directory where you want to store the program, then type ```git clone address``` to download the program
