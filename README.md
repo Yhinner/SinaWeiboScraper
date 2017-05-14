@@ -39,3 +39,6 @@ Results will be in ```output``` folder in csv format. Each query generates one c
 
 ### How to developer
 For now this program only supports query with keyword for my own purpose. everyone is free to explore new features. There is one thing needs to be noted that it does not use Sina Weibo API since Weibo limits the amount of data to query if API is used. It basically uses broswer cookie to login, url address to do search. Please submit a pull request if you are read to contribute.
+
+### License
+This project is licensed under the MIT License - see the LICENSE.md file for details
