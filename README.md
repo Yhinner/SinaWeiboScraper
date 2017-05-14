@@ -2,7 +2,7 @@
 This is a Web Scraper for Sina Weibo Search by Keywords
 
 # Author
-[Xuzhou Yin](https://github.com/Yhinner). Personal Website: [www.xuzhouyin.com](www.xuzhouyin.com)
+[Xuzhou Yin](https://github.com/Yhinner). Personal Website: [www.xuzhouyin.com](http://www.xuzhouyin.com)
 
 ## How to Download
 Open terminal, and navigate to the directory where you want to store the program, then type ```git clone address``` to download the program
