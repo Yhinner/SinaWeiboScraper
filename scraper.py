@@ -24,16 +24,17 @@ def scrap():
 	each_query = [x.strip() for x in each_query]
 	# print urllib.quote(urllib.quote(each_query[0]))
 	for each in each_query:
+		query = each_query
 		s = each.split(';')
 		keyword = s[0]# urllib.quote(urllib.quote(s[0]))
 		date = s[1]
 		start = s[2]
 		end = s[3]
 		page = s[4]
-		scrap_each_query(keyword, date, start, end, page)
+		scrap_each_query(keyword, date, start, end, page, query)
 		file_index = file_index + 1
 
-def scrap_each_query(keyword, date, start, end, page):
+def scrap_each_query(keyword, date, start, end, page, query):
 	real_keyword = keyword
 	keyword = urllib.quote(urllib.quote(keyword))
 	# login_url = 'http://m.weibo.com/'
@@ -91,14 +92,14 @@ def scrap_each_query(keyword, date, start, end, page):
 				print time
 			all_time.append(time)
 	driver.close()
-	save_to_csv(file + str(file_index), real_keyword, date, all_content, all_time)
+	save_to_csv(file + str(file_index), real_keyword, date, all_content, all_time, query)
 
-def save_to_csv(filename, keyword, date, content, time):
+def save_to_csv(filename, keyword, date, content, time, query):
 	with open('./output/' + filename + '.csv', 'w') as csvfile:
 	    spamwriter = csv.writer(csvfile, dialect='excel', encoding='utf-16')
-	    spamwriter.writerow(["Post ID", "keyword", "event Date", "Post Content", "Post Time"])
+	    spamwriter.writerow(["query", "Post ID", "keyword", "event Date", "Post Content", "Post Time"])
 	    for i in range(len(content)):
-	    	spamwriter.writerow([i + 1, keyword, date, content[i], time[i]])
+	    	spamwriter.writerow([query, i + 1, keyword, date, content[i], time[i]])
 
 scrap()
 
