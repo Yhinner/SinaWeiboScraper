@@ -17,14 +17,15 @@ from selenium.webdriver.firefox.webdriver import FirefoxProfile
 import unicodecsv as csv
 base_url = 'http://s.weibo.com/weibo/'
 file = "query"
-file_index = 3
+file_index = 6
 def scrap():
+	global file_index
 	with open('query.txt') as f:
 		each_query = f.readlines()
 	each_query = [x.strip() for x in each_query]
 	# print urllib.quote(urllib.quote(each_query[0]))
 	for each in each_query:
-		query = each_query
+		query = each
 		s = each.split(';')
 		keyword = s[0]# urllib.quote(urllib.quote(s[0]))
 		date = s[1]
@@ -56,9 +57,11 @@ def scrap_each_query(keyword, date, start, end, page, query):
 	profile = FirefoxProfile("/Users/xuzhouyin/Library/Application Support/Firefox/Profiles/ky3euswa.default-1457644506160")
 	driver = webdriver.Firefox(profile)
 	# co = webdriver.ChromeOptions()
-	# co.add_argument('user-data-dir=/Users/xuzhouyin/Library/Application Support/Google/Chrome/Default/')
+	# co.add_argument('user-data-dir=/Users/xuzhouyin/Library/Application Support/Google/Chrome/')
 	# driver = webdriver.Chrome(chrome_options = co)
-
+	url = base_url + keyword + "&typeall=1&suball=1&timescope=custom:" + start + ":" + end + "&page=" + "1"
+	driver.get(url)
+	systime.sleep(5)
 	for i in range(int(page)):
 		url = base_url + keyword + "&typeall=1&suball=1&timescope=custom:" + start + ":" + end + "&page=" + str(i + 1)
 		# url = "http://s.weibo.com/weibo/%25E5%2585%2583%25E6%2597%25A6&typeall=1&suball=1&timescope=custom:2016-12-31:2016-12-31&Refer=g"
@@ -70,7 +73,7 @@ def scrap_each_query(keyword, date, start, end, page, query):
 		# for cookie in pickle.load(open("chrome.pkl", "rb")):
 		# 	driver.add_cookie(cookie)
 		driver.get(url)
-		systime.sleep(1)
+		
 		# driver.magage().add_cookie(savedCookies)
 		page_source = driver.page_source
 		soup = BeautifulSoup(page_source, "html.parser")
@@ -78,7 +81,6 @@ def scrap_each_query(keyword, date, start, end, page, query):
 		time = soup.findAll("a", { "class" : "W_textb" })
 		
 		for each in content:
-			print each.get_text().strip().encode('utf-8')
 			all_content.append(each.get_text().encode('utf-8'))
 		for each in time:
 			each = each.get_text()
@@ -86,10 +88,8 @@ def scrap_each_query(keyword, date, start, end, page, query):
 			time = ""
 			if "月" in each:
 				time = str(datetime.datetime.now().year) + "-" + each[0:each.index("月")] + "-" + each[(each.index("月") + 3):each.index("日")]
-				print time
 			else:
 				time = each[0:each.index(" ")]
-				print time
 			all_time.append(time)
 	driver.close()
 	save_to_csv(file + str(file_index), real_keyword, date, all_content, all_time, query)
