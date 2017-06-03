@@ -45,8 +45,6 @@ def scrap_each_query(keyword, date, start, end, page, query):
 	# string = '登录'
 	# driver.find_element_by_link_text ( string.decode('utf-8') ).click()
 	# driver.implicitly_wait(2)
-	# driver.find_element_by_id("loginName").send_keys("einstein3@qq.com")
-	# driver.find_element_by_id("loginPassword").send_keys("v19950925oooonnn")
 	# driver.find_element_by_link_text(string.decode('utf-8') ).click()
 	# savedCookies = driver.get_cookies()
 	# # login code
